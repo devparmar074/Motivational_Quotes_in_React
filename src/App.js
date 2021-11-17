@@ -33,6 +33,8 @@ class App extends React.Component {
                     <button className="button" onClick={this.fetchAdvices}>
                         <span>for more Advice</span>
                     </button>
+                    <br/>
+                    <span>By Dev Parmar</span>
                 </div>
             </div>
         );
