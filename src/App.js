@@ -35,7 +35,7 @@ class App extends React.Component {
                         
                     </button>
                     <br/>
-                    <span>By Dev Parmar</span>
+                    By Dev Parmar
                 </div>
             </div>
         );
