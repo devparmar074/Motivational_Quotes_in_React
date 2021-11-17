@@ -1,64 +1,47 @@
-#root, html, body{
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    box-sizing: border-box;
-}
+import axios from "axios";
+import React from "react";
+import './App.css';
+class App extends React.Component {
 
-.app{
-    height: 100%;
-    background:  url('./back.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+    state = { advice:''};
 
-.card{
-    
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    width: 40%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 2%;
-    border-radius: 25px;
-    
-
-}
-
-.heading{
-    display: flex;
-    align-items: center;
-    height: 500px;
-    font-family: 'Spartan', sans-serif;
-}
-
-.button{
-    
-    position: relative;
-    outline: none;
-    text-decoration: none;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    height: 200px;
-    width: 200px;
-    opacity: 1;
-    font-size: medium;
-}
-
-@media only screen and (max-width: 650px) {
-    .card{
-        width: 80%;
-        height: 30%;
+    componentDidMount(){
+        this.fetchAdvices();
     }
+
+    fetchAdvices = () => {
+        axios.get('https://api.adviceslip.com/advice')
+        .then((response) => {
+            const { advice } = response.data.slip;
+            //console.log(advice);
+            this.setState({ advice: advice});
+        })
+
+        .catch((error) => {
+        console.log(error);
+        })
+    }
+
+    render(){
+
+        const {advice} = this.state;
+        return(
+            //<h1>{advice}</h1>
+            <div className="app">
+                <div className="card">
+                    <h1 className="heading">{advice}</h1>
+                    <button className="button" onClick={this.fetchAdvices}>
+                        <span>for more Advice</span>
+                        
+                    </button>
+                    <br/>
+                    <span>By Dev Parmar</span>
+                </div>
+            </div>
+        );
+    }
+
+
 }
-    
+
+export default App;
