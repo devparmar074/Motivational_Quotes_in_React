@@ -17,11 +17,10 @@
 }
 
 .card{
-    
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
-    width: 40%;
-    height: 40%;
+    width: 40vh;
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,12 +52,13 @@
     width: 200px;
     opacity: 1;
     font-size: medium;
+    
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 768px) {
     .card{
-        width: 80%;
-        height: 30%;
+        width: 75%;
+        height: 50%;
     }
 }
     
